@@ -13,33 +13,55 @@
         --cyan: #00f6ff;
         --yellow: #fff500;
         --white: #ffffff;
+        --slime: #84ff3b;
+        --lava: #ff7a00;
+        --brutal: #ff00f0;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html,
+      body {
+        min-height: 100%;
+        background-color: var(--bg);
+      }
+
       body {
         margin: 0;
         font-family: "Comic Sans MS", "Trebuchet MS", "Courier New", cursive;
-        background: repeating-linear-gradient(
-            45deg,
-            #12002b 0,
-            #12002b 10px,
-            #0a001f 10px,
-            #0a001f 20px
-          ),
-          radial-gradient(circle at 15% 20%, #3d0e6d 0, transparent 40%),
-          radial-gradient(circle at 80% 10%, #003b6d 0, transparent 45%),
-          var(--bg);
-        color: var(--white);
+        background-image: url("assets/tile.gif");
+        background-repeat: repeat;
+        background-size: 96px 96px, 120px 120px, auto, auto, auto, auto;
         text-align: center;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          radial-gradient(circle, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
+          radial-gradient(circle, rgba(255, 245, 0, 0.6) 0 1px, transparent 2px),
+          radial-gradient(circle, rgba(0, 246, 255, 0.55) 0 1px, transparent 2px),
+          radial-gradient(circle, rgba(255, 0, 240, 0.5) 0 1px, transparent 2px);
+        background-size: 60px 60px, 90px 90px, 130px 130px, 160px 160px;
+        background-position: 10px 20px, 40px 70px, 90px 30px, 140px 10px;
+        mix-blend-mode: screen;
+        opacity: 0.75;
+        pointer-events: none;
+        animation: glitter 2.2s linear infinite;
+        z-index: 0;
       }
 
       .page {
-        max-width: 900px;
+        max-width: 980px;
         margin: 0 auto;
-        padding: 28px 18px 60px;
+        padding: 12px 12px 60px;
+        position: relative;
+        z-index: 1;
       }
 
       .marquee {
@@ -48,8 +70,13 @@
         font-weight: bold;
         padding: 6px 0;
         border: 3px ridge #fff;
-        margin-bottom: 18px;
+        margin-bottom: 8px;
         text-shadow: none;
+      }
+
+      .marquee.alt {
+        background: linear-gradient(90deg, #ffea00, #ff00ff, #00ff8c);
+        border-color: #000;
       }
 
       .title {
@@ -58,6 +85,12 @@
         text-shadow: 3px 3px 0 #000, -2px -2px 0 #5a00b4;
         color: var(--yellow);
         margin: 14px 0 6px;
+      }
+
+      .title.glitch {
+        color: var(--slime);
+        text-shadow: 2px 2px 0 var(--brutal), -3px -3px 0 var(--cyan);
+        animation: glitch 0.12s steps(2, end) infinite;
       }
 
       .subtitle {
@@ -73,6 +106,43 @@
         padding: 16px;
         margin: 18px auto;
         box-shadow: 0 0 0 4px #000 inset, 0 0 20px #000;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 260px;
+        gap: 10px;
+        align-items: start;
+      }
+
+      .sidebar {
+        background: #0f001f;
+        border: 4px double var(--lava);
+        padding: 10px;
+        box-shadow: 0 0 0 3px #000 inset;
+      }
+
+      .sidebar h4 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        color: var(--lava);
+        text-transform: uppercase;
+      }
+
+      .sidebar .sticker {
+        display: block;
+        width: 100%;
+        margin: 8px 0;
+      }
+
+      .counter {
+        display: inline-block;
+        padding: 6px 10px;
+        background: #000;
+        border: 3px inset #fff;
+        font-family: "Courier New", monospace;
+        color: var(--neon);
+        letter-spacing: 2px;
       }
 
       .video-panel {
@@ -107,7 +177,6 @@
 
       .video-thumb {
         max-width: 100%;
-        border: 3px solid #fff;
         box-shadow: 0 0 12px #000;
         margin-top: 10px;
       }
@@ -126,7 +195,6 @@
 
       .scroll-track img {
         height: 300px;
-        border: 3px solid #fff;
         box-shadow: 0 0 10px #000;
         margin: 0 14px;
       }
@@ -137,9 +205,56 @@
         font-weight: bold;
       }
 
+      .blink.fast {
+        animation-duration: 0.35s;
+        color: var(--brutal);
+      }
+
+      .sparkle {
+        animation: sparkle 1.1s ease-in-out infinite;
+      }
+
       @keyframes blink {
         50% {
           opacity: 0;
+        }
+      }
+
+      @keyframes sparkle {
+        0% {
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.12) rotate(2deg);
+        }
+        100% {
+          transform: scale(1) rotate(-2deg);
+        }
+      }
+
+      @keyframes glitch {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-2px, 1px);
+        }
+        100% {
+          transform: translate(1px, -1px);
+        }
+      }
+
+      @keyframes glitter {
+        0% {
+          opacity: 0.55;
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          opacity: 0.95;
+        }
+        100% {
+          opacity: 0.75;
+          transform: translate3d(0, -18px, 0);
         }
       }
 
@@ -148,7 +263,6 @@
         color: var(--neon);
         letter-spacing: 1px;
       }
-
 
       .badge {
         border: 3px dashed var(--yellow);
@@ -159,9 +273,18 @@
         text-transform: uppercase;
       }
 
+      .badge.lava {
+        border-color: var(--lava);
+        color: var(--lava);
+      }
+
       .rant {
         font-size: 18px;
         line-height: 1.5;
+        color: #f4f0ff;
+        background: rgba(0, 0, 0, 0.55);
+        text-shadow: 1px 1px 0 #000;
+        padding: 8px 10px;
       }
 
       .rant strong {
@@ -174,6 +297,70 @@
         font-size: 13px;
         color: #d0c6ff;
       }
+
+      .ticker {
+        background: #000;
+        border: 4px groove var(--slime);
+        padding: 4px 0;
+        margin: 12px 0;
+      }
+
+      .tile-row img {
+        width: 88px;
+        height: 60px;
+        object-fit: cover;
+        margin: 4px;
+      }
+
+      .table-slam {
+        width: 100%;
+        border-collapse: collapse;
+        background: #120018;
+        border: 5px groove #fff;
+      }
+
+      .table-slam td {
+        border: 3px dotted var(--cyan);
+        padding: 10px;
+        vertical-align: top;
+      }
+
+      .gif-box {
+        border: 4px ridge var(--slime);
+        padding: 6px;
+        background: #000;
+        margin: 8px 0;
+      }
+
+      .gif-box img {
+        width: 100%;
+        height: auto;
+      }
+
+      .sidebar .sticker,
+      .video-thumb,
+      .scroll-track img,
+      .tile-row img,
+      .gif-box img {
+        border: 3px solid #fff;
+      }
+
+      .table-image-frame {
+        display: block;
+        width: 100%;
+        margin: 12px auto 0;
+        border: 5px ridge var(--slime);
+        box-shadow: 0 0 0 3px #000 inset, 0 0 16px #000;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          order: -1;
+        }
+      }
     </style>
   </head>
   <body>
@@ -183,21 +370,54 @@
           WELCOME TO THE ANTI-NUTRIA ZONE *** NO NUTRIAS ALLOWED
         </marquee>
       </div>
-
-      <div class="panel">
-        <div class="title">ANTI-NUTRIA ZONE</div>
-		<div class="subtitle">Death to all nutrias</div>
-        <div class="starbar">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
+      <div class="marquee alt">
+        <marquee behavior="alternate" direction="right" scrollamount="12">
+          !!! WARNING !!! NUTRIA DETECTED IN AREA !!! TURN BACK !!!
+        </marquee>
       </div>
 
       <div class="panel">
-        <div class="badge">WARNING: THIS PAGE IS NUTRIA-FREE</div>
-        <p class="rant">
-          I do not like nutrias. I do not want them in my yard, my pond, my snacks,
-          or my neighborhood. This is dedicated to
-          <strong>NOT LIKING NUTRIAS</strong>.
-        </p>
-        <p class="blink">HATE STATUS: MAXIMUM</p>
+        <div class="title">ANTI-NUTRIA ZONE</div>
+        <div class="title glitch">ANTI-NUTRIA ZONE</div>
+        <div class="subtitle">Death to all nutrias</div>
+        <div class="starbar">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
+      </div>
+
+      <div class="panel grid">
+        <div>
+          <div class="badge">WARNING: THIS PAGE IS NUTRIA-FREE</div>
+          <p class="rant">
+            I do not like nutrias. I do not want them in my yard, my pond, my snacks,
+            or my neighborhood. This is dedicated to
+            <strong>NOT LIKING NUTRIAS</strong>.
+          </p>
+          <p class="blink">HATE STATUS: MAXIMUM</p>
+          <div class="ticker">
+            <marquee behavior="scroll" direction="left" scrollamount="14">
+              ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT
+            </marquee>
+          </div>
+          <table class="table-slam">
+            <tr>
+              <td>
+                <div class="badge lava">OFFICIAL NUTRIA BAN LIST</div>
+                <p class="rant">Backyards, ponds, kitchens, cereal bowls, and my soul.</p>
+              </td>
+              <td>
+                <div class="badge">NUTRIA FACTS</div>
+                <p class="rant">They are big. They are rude. They chew. They are on watch.</p>
+              </td>
+            </tr>
+          </table>
+          <img class="table-image-frame" src="assets/image.jpg" alt="Nutria alert" />
+        </div>
+        <aside class="sidebar">
+          <h4>Visitor Counter</h4>
+          <div class="counter">0001337</div>
+          <h4>Nutria Proof</h4>
+          <img class="sticker" src="assets/nutria.gif" alt="Warning gif" />
+          <img class="sticker" src="assets/nutria-eating.gif" alt="Alert gif" />
+        </aside>
       </div>
 
       <div class="panel video-panel">
@@ -213,7 +433,7 @@
             alt="Video thumbnail"
           />
         </div>
-        <p class="blink">WATCH THIS</p>
+        <p class="blink fast">WATCH THIS</p>
       </div>
 
       <div class="panel scroll-panel">
@@ -249,6 +469,21 @@
               alt="Nutria scrolling"
             />
           </marquee>
+        </div>
+        <div class="tile-row">
+          <img src="assets/nutria2.jpg" alt="Nutria tile" />
+          <img src="assets/nutria.jpg" alt="Nutria tile" />
+          <img src="assets/nutria3.jpg" alt="Nutria tile" />
+          <img src="assets/gross.jpg" alt="Nutria tile" />
+          <img src="assets/asdb.jpg" alt="Nutria tile" />
+          <img src="assets/mexico.jpg" alt="Nutria tile" />
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="badge">TRUTH</div>
+        <div class="gif-box sparkle">
+          <img src="assets/meme.jpg" />
         </div>
       </div>
 
