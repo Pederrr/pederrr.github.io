@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anti-Nutria Zone</title>
+    <style>
+      :root {
+        --bg: #0a001f;
+        --panel: #1b003b;
+        --hot: #ff2b6f;
+        --neon: #39ff14;
+        --cyan: #00f6ff;
+        --yellow: #fff500;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Comic Sans MS", "Trebuchet MS", "Courier New", cursive;
+        background: repeating-linear-gradient(
+            45deg,
+            #12002b 0,
+            #12002b 10px,
+            #0a001f 10px,
+            #0a001f 20px
+          ),
+          radial-gradient(circle at 15% 20%, #3d0e6d 0, transparent 40%),
+          radial-gradient(circle at 80% 10%, #003b6d 0, transparent 45%),
+          var(--bg);
+        color: var(--white);
+        text-align: center;
+      }
+
+      .page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 28px 18px 60px;
+      }
+
+      .marquee {
+        background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+        color: #000;
+        font-weight: bold;
+        padding: 6px 0;
+        border: 3px ridge #fff;
+        margin-bottom: 18px;
+        text-shadow: none;
+      }
+
+      .title {
+        font-size: 48px;
+        letter-spacing: 2px;
+        text-shadow: 3px 3px 0 #000, -2px -2px 0 #5a00b4;
+        color: var(--yellow);
+        margin: 14px 0 6px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: var(--cyan);
+        text-shadow: 1px 1px 0 #000;
+        margin: 0 0 18px;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 5px ridge #bdf;
+        padding: 16px;
+        margin: 18px auto;
+        box-shadow: 0 0 0 4px #000 inset, 0 0 20px #000;
+      }
+
+      .video-panel {
+        border: 6px ridge var(--hot);
+        box-shadow: 0 0 0 4px #000 inset, 0 0 25px var(--hot);
+      }
+
+      .video-title {
+        font-size: 22px;
+        color: var(--yellow);
+        text-shadow: 2px 2px 0 #000;
+        margin: 0 0 10px;
+      }
+
+      .video-frame {
+        border: 4px double var(--cyan);
+        background: #000;
+        padding: 6px;
+      }
+
+
+      .video-link {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 8px 14px;
+        background: linear-gradient(180deg, #ff3b3b, #b30000);
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        border: 3px outset #ffb3b3;
+      }
+
+      .video-thumb {
+        max-width: 100%;
+        border: 3px solid #fff;
+        box-shadow: 0 0 12px #000;
+        margin-top: 10px;
+      }
+
+
+      .scroll-panel {
+        border: 6px ridge var(--yellow);
+        box-shadow: 0 0 0 4px #000 inset, 0 0 25px var(--yellow);
+      }
+
+      .scroll-track {
+        border: 3px dashed var(--hot);
+        background: #120018;
+        padding: 8px 0;
+      }
+
+      .scroll-track img {
+        height: 300px;
+        border: 3px solid #fff;
+        box-shadow: 0 0 10px #000;
+        margin: 0 14px;
+      }
+
+      .blink {
+        animation: blink 1s steps(1, end) infinite;
+        color: var(--hot);
+        font-weight: bold;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .starbar {
+        font-family: "Courier New", monospace;
+        color: var(--neon);
+        letter-spacing: 1px;
+      }
+
+
+      .badge {
+        border: 3px dashed var(--yellow);
+        padding: 10px;
+        background: #000;
+        color: var(--yellow);
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .rant {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      .rant strong {
+        color: var(--hot);
+      }
+
+
+      .footer {
+        margin-top: 24px;
+        font-size: 13px;
+        color: #d0c6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="marquee">
+        <marquee behavior="scroll" direction="left" scrollamount="8">
+          WELCOME TO THE ANTI-NUTRIA ZONE *** NO NUTRIAS ALLOWED
+        </marquee>
+      </div>
+
+      <div class="panel">
+        <div class="title">ANTI-NUTRIA ZONE</div>
+		<div class="subtitle">Death to all nutrias</div>
+        <div class="starbar">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
+      </div>
+
+      <div class="panel">
+        <div class="badge">WARNING: THIS PAGE IS NUTRIA-FREE</div>
+        <p class="rant">
+          I do not like nutrias. I do not want them in my yard, my pond, my snacks,
+          or my neighborhood. This is dedicated to
+          <strong>NOT LIKING NUTRIAS</strong>.
+        </p>
+        <p class="blink">HATE STATUS: MAXIMUM</p>
+      </div>
+
+      <div class="panel video-panel">
+        <div class="video-title">MUST-WATCH VIDEO ALERT</div>
+        <div class="video-frame">
+          <div class="badge">MUST WATCH THIS</div>
+          <a class="video-link" href="https://www.youtube.com/watch?v=v8TDNG3aJIo" target="_blank" rel="noreferrer">
+            OPEN VIDEO ON YOUTUBE
+          </a>
+          <img
+            class="video-thumb"
+            src="https://i.ytimg.com/vi/v8TDNG3aJIo/hqdefault.jpg"
+            alt="Video thumbnail"
+          />
+        </div>
+        <p class="blink">WATCH THIS</p>
+      </div>
+
+      <div class="panel scroll-panel">
+        <div class="video-title">SCROLLING NUTRIA ALERT</div>
+        <div class="scroll-track">
+          <marquee behavior="scroll" direction="left" scrollamount="10">
+            <img
+              src="./assets/nutria.jpg"
+              alt="Nutria scrolling"
+            />
+            <img
+              src="assets/nutria2.jpg"
+              alt="Nutria scrolling"
+            />
+            <img
+              src="assets/asdb.jpg"
+              alt="Nutria scrolling"
+            />
+            <img
+			  src="assets/gross.jpg"
+			  alt="Nutria scrolling"
+			/>
+            <img
+              src="./assets/nutria3.jpg"
+              alt="Nutria scrolling"
+            />
+            <img
+              src="assets/mexico.jpg"
+              alt="Nutria scrolling"
+            />
+            <img
+              src="assets/map.jpg"
+              alt="Nutria scrolling"
+            />
+          </marquee>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>© 2026 nutria hater</div>
+      </div>
+    </div>
+  </body>
+</html>
